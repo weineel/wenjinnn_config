@@ -15,6 +15,11 @@ set ttimeoutlen=0
 " set timeoutlen=500
 set virtualedit=block,onemore
 
+" The number of lines reserved above and below the cursor
+set scrolloff=8
+" The number of lines left and right of the cursor
+set sidescrolloff=8
+
 " ignore filetype when file search
 set wildignore+=*/tmp/*,*.so,*.swp,*.png,*.jpg,*.jpeg,*.gif,*.class,*.pyc,*.pyd
 
@@ -26,12 +31,11 @@ set smartindent
 filetype indent on
 " tabs & space
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set smarttab
 set backspace=2
-set sidescroll=10
 set list
 " set listchars=tab:>~,space:·,precedes:«,extends:»,trail:·,eol:↴
 if &buftype != 'terminal'
@@ -42,13 +46,14 @@ endif
 set undofile
 set undodir=~/.local/share/nvim/undo
 set noshowmode
-set wrap
+" set wrap
+set nowrap
 set foldmethod=marker
 set foldlevelstart=99
 if !exists('g:vscode')
     colorscheme vscode
 endif
-set relativenumber  
+set relativenumber
 " set mouse=
 set mouse=a
 " set cursorcolumn

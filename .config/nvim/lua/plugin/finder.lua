@@ -5,7 +5,9 @@ return {
     { 'debugloop/telescope-undo.nvim' },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make'
+      -- On a Mac M1
+      -- Need "brew install make" or changing it to "build='arch -arm64 make'"
+      build = 'gmake'
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-telescope/telescope-live-grep-args.nvim' },

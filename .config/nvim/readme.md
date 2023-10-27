@@ -1,5 +1,11 @@
 ### Personal nvim configuration
 
+#### Dependency
+1. brew install make # gmake telescope-fzf-native.nvim depend on it
+2. brew install gnu-sed
+3. brew install ripgrep # telescope depend on it
+4. npm install -g cspell # nvim-lint depend on it
+
 #### Directory function notes
 
 `./plugin`  

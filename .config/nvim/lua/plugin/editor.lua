@@ -1,5 +1,44 @@
 return {
   {
+    "max397574/better-escape.nvim",
+    cond = not vim.g.vscode,
+    opts = {
+      mapping = { "jj" } 
+    }
+  },
+  {
+    "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+      require("numb").setup {
+        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+        hide_relativenumbers = true,
+        number_only = true,
+      }
+    end,
+  },
+  {
+    "karb94/neoscroll.nvim",
+    cond = not vim.g.vscode,
+    event = "WinScrolled",
+    config = function()
+      require('neoscroll').setup({
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+        '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+        hide_cursor = true,          -- Hide cursor while scrolling
+        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = true, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = true,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil,        -- Default easing function
+        pre_hook = nil,              -- Function to run before the scrolling animation starts
+        post_hook = nil,              -- Function to run after the scrolling animation ends
+      })
+    end
+  },
+  {
     'kylechui/nvim-surround',
     config = function()
       require('nvim-surround').setup({
