@@ -127,7 +127,7 @@ nnoremap <leader>gh <cmd>Telescope git_stash<cr>
 " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Display translation in a window
+" Display translation in a window (translate.nvim)
 nnoremap <silent> <leader>tt <cmd>Translate ZH<CR>
 xnoremap <silent> <leader>tt <cmd>Translate ZH<CR>
 " Replace the text with translation
@@ -270,6 +270,11 @@ if s:textdomain == 'git'
     nnoremap <silent> gl <cmd>diffget LO<CR>
     nnoremap <silent> gr <cmd>diffget RE<CR>
 endif
+
+" VSCodeNotify、VSCodeNotifyRange、VSCodeNotifyRangePos 等是 vscode.neovim 插件提供的能力，可以让 neovim 调用 vscode 的能力
+" https://github.com/vscode-neovim/vscode-neovim#vimscript
+" 可以在 vscode 的 shortcuts 中 右键 复制 command id
+
 if exists('g:vscode')
     nnoremap K <cmd>call VSCodeNotify('editor.action.showHover')<CR>
     nnoremap gd <cmd>call VSCodeNotify('editor.action.peekDefinition')<CR>
@@ -279,14 +284,15 @@ if exists('g:vscode')
     nnoremap gI <cmd>call VSCodeNotify('editor.showIncomingCalls')<CR>
     nnoremap gO <cmd>call VSCodeNotify('editor.showOutgoingCalls')<CR>
     nnoremap gr <cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
-    vnoremap <leader>tt <cmd>call VSCodeNotifyVisual('translates.translates', 1)<cr>
+    " 依赖 Vscode Google Translate 插件
+    vnoremap <leader>tr <cmd>call VSCodeNotifyRangePos('extension.translateText', line("'<"), line("'>"), getpos("'<"), getpos("'>"), 1)<cr>
     nnoremap <leader>ff <cmd>call VSCodeNotify('workbench.action.quickOpen')<cr>
     nnoremap <leader>fg <cmd>call VSCodeNotify('workbench.view.search')<cr>
     nnoremap <leader>fb <cmd>call VSCodeNotify('workbench.action.quickOpenPreviousRecentlyUsedEditor')<CR>
     nnoremap <C-n> <cmd>call VSCodeNotify('workbench.action.quickOpenPreviousRecentlyUsedEditor')<CR>
     nnoremap <C-p> <cmd>call VSCodeNotify('workbench.action.quickOpenLeastRecentlyUsedEditor')<CR>
     nnoremap <leader>mm <cmd>call VSCodeNotify('editor.action.formatDocument')<CR>
-    vnoremap <leader>mm <cmd>call VSCodeNotifyVisual('editor.action.formatSelection')<CR>
+    vnoremap <leader>mm <cmd>call VSCodeNotifyRange('editor.action.formatSelection', line("'<"), line("'>"), 0)<CR>
     nnoremap <leader>ca <cmd>call VSCodeNotify('editor.action.quickFix')<CR>
-    vnoremap <leader>ca <cmd>call VSCodeNotifyVisual('editor.action.quickFix')<CR>
+    vnoremap <leader>ca <cmd>call VSCodeNotifyRange('editor.action.quickFix', line("'<"), line("'>"), 0)<CR>
 endif
