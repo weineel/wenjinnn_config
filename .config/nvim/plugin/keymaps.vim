@@ -276,6 +276,7 @@ endif
 " 可以在 vscode 的 shortcuts 中 右键 复制 command id
 
 if exists('g:vscode')
+    nnoremap <leader>y <cmd>call VSCodeNotify('editor.action.clipboardCopyAction')<CR>
     nnoremap K <cmd>call VSCodeNotify('editor.action.showHover')<CR>
     nnoremap gd <cmd>call VSCodeNotify('editor.action.peekDefinition')<CR>
     nnoremap gD <cmd>call VSCodeNotify('editor.action.peekDeclaration')<CR>
@@ -285,7 +286,9 @@ if exists('g:vscode')
     nnoremap gO <cmd>call VSCodeNotify('editor.showOutgoingCalls')<CR>
     nnoremap gr <cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
     " 依赖 Vscode Google Translate 插件
-    vnoremap <leader>tr <cmd>call VSCodeNotifyRangePos('extension.translateText', line("'<"), line("'>"), getpos("'<"), getpos("'>"), 1)<cr>
+    " vnoremap <leader>tr <cmd>call VSCodeNotifyRangePos('extension.translateText', line("'<"), line("'>"), getpos("'<"), getpos("'>"), 1)<cr>
+    " 依赖 Vscode Google Translate 插件
+    vnoremap <leader>tr <cmd>call VSCodeNotify('extension.translateText')<cr>
     nnoremap <leader>ff <cmd>call VSCodeNotify('workbench.action.quickOpen')<cr>
     nnoremap <leader>fg <cmd>call VSCodeNotify('workbench.view.search')<cr>
     nnoremap <leader>fb <cmd>call VSCodeNotify('workbench.action.quickOpenPreviousRecentlyUsedEditor')<CR>
