@@ -14,6 +14,7 @@ set whichwrap+=<,>,h,l
 set ttimeoutlen=0
 " set timeoutlen=500
 set virtualedit=block,onemore
+set iskeyword+=-
 
 " The number of lines reserved above and below the cursor
 set scrolloff=8
