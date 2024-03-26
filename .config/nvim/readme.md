@@ -35,3 +35,7 @@ TELESCOPE_FILE_IGNORE_PATTERNS -- special file_ignore_patterns setting. see `:h 
 3. recommend [tmux](https://github.com/tmux/tmux) & [oh-my-tmux](https://github.com/gpakosz/.tmux) to manage your terminal.
 4. recommend [lazygit](https://github.com/jesseduffield/lazygit) to enhance git experience.
 
+
+```sh
+ln -s ~/project/my/config/xdg/config/nvim ~/.config/nvim
+```

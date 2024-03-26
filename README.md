@@ -15,6 +15,10 @@ Also I had optimize this repo size recently by using [git-filter-repo](https://g
 ### .config/nvim
 My neovim configuration. since neovim 0.5 version, lot plugins are not compatible with vim, so I completely separated vim and neovim configuration. 
 
+```sh
+ln -s ~/project/my/config/xdg/config/nvim ~/.config/nvim
+```
+
 ### .config/hypr
 [hyprland](https://github.com/hyprwm/Hyprland) a wayland based compositor
 

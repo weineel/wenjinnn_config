@@ -23,16 +23,16 @@ return {
           augend.date.alias["%H:%M"],
           augend.constant.alias.ja_weekday_full,
           augend.constant.alias.bool,
-          augend.constant.new{
+          augend.constant.new {
             elements = {"and", "or"},
             word = true, -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc. default: true
             cyclic = true,  -- "or" is incremented into "and". default: true
           },
-          augend.constant.new{
+          augend.constant.new {
             elements = {"&&", "||"},
             word = false,
           },
-          augend.constant.new{
+          augend.constant.new {
             elements = {"const", "let"},
           },
         },
@@ -67,6 +67,7 @@ return {
   },
   {
     "nacro90/numb.nvim",
+    cond = not vim.g.vscode,
     event = "BufRead",
     config = function()
       require("numb").setup {
@@ -101,19 +102,19 @@ return {
     'kylechui/nvim-surround',
     config = function()
       require('nvim-surround').setup({
-        keymaps = {
-          insert = "<C-g>s",
-          insert_line = "<C-g>S",
-          normal = "gs",
-          normal_cur = "gss",
-          normal_line = "gS",
-          normal_cur_line = "gSS",
-          visual = "gs",
-          visual_line = "gS",
-          delete = "gsd",
-          change = "gsc",
-          change_line = "gsC",
-        },
+        -- keymaps = {
+        --   insert = "<C-g>s",
+        --   insert_line = "<C-g>S",
+        --   normal = "gs",
+        --   normal_cur = "gss",
+        --   normal_line = "gS",
+        --   normal_cur_line = "gSS",
+        --   visual = "gs",
+        --   visual_line = "gS",
+        --   delete = "gsd",
+        --   change = "gsc",
+        --   change_line = "gsC",
+        -- },
       })
     end
   },
